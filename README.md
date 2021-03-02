@@ -2,7 +2,9 @@
 This project uses DDPG implemented in Pytorch to solve the Unity Reacher environment. The environment is considered solved if the score (average over 100 episodes and all the parallel arms) is >30. The code is in PyTorch (v0.4) and Python 3. 
 
 ## Unity Reacher Environment
-The agent controls a double-jointed arm to move to goal locations and keep it there. The agent recieve +0.1 reward for every time stamp the arm is in the goal location. The observation space has 33 variables and the action space has 4 continuous variables. 
+The agent controls a double-jointed arm to move its enpoint (blue) to a goal location (green) and keep it there. The agent recieve +0.1 reward for every time stamp the arm is in the goal location. The observation space has 33 variables and the action space has 4 continuous variables.
+
+<img src="https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/Unity-Reacher_untrained.gif" width="500" >
 
 ## Dependencies
 Installation of dependencies follow https://github.com/udacity/deep-reinforcement-learning#dependencies
@@ -56,5 +58,7 @@ x = F.tanh(x)
 
 ## Results
 The environment is solved in 283 episodes.
+
+<img src="https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/Unity-Reacher_trained.gif" width="500" >
 
 ![Training score](https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/scores.png)
