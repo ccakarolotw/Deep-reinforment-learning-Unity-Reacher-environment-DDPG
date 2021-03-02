@@ -25,13 +25,14 @@ The critic network is updated through TD learning.
 
 Q(state, action) = reward + GAMMA* Q'(next_state,next_action)
 
-Q' is the target Q network. The critic and target critic network is represented by a neural network with three fully connected layers.
-```x_state = nn.Linear(state_dim,hidden_dim_state)(state)
+Q' is the target Q network. 
+The critic and target critic network is represented by a neural network with three fully connected layers.
+```x_state = nn.Linear(state_dim,hidden_dim)(state)
 x_state = F.leaky_relu(x_state)
 x = torch.cat(x_state, action)
-x = nn.Linear(hidden_dim_state+action_dim, hidden_dim)(x)
+x = nn.Linear(hidden_dim+action_dim, hidden_dim_1)(x)
 x = F.relu(x)
-x = nn.Linear(hidden_dim, 1)(x)
+x = nn.Linear(hidden_dim_1, 1)(x)
 ```
 
 The actor network is represented by a neural network with three fully connected layers.
@@ -43,6 +44,17 @@ x = nn.Linear(hidden_dim_1, action_dim)(x)
 x = F.tanh(x)
 ```
 
+### Hyperparameters
+- GAMMA=0.99
+- hidden_dim = 256
+- hidden_dim_1 = 128
+- Target critic and target actor network are are updated through soft update (target_ parameter = (1-tau)* target_ parameter + tau* local_ parameter)
+- tau = 1E-3
+- Batch_size = 64
+- Critic optimizer: Adam with learning rate 5E-4
+- Actor optimizer: Adam with learning rate 2E-4
+
 ## Results
 The environment is solved in 283 episodes.
+
 ![Training score](https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/scores.png)
