@@ -1,5 +1,5 @@
 # Deep-reinforment-learning-Unity-Reacher-environment-DDPG
-This project uses DDPG implemented in Pytorch to solve the Unity Reacher environment. The environment is solved in 238 episodes. 
+This project uses DDPG implemented in Pytorch to solve the Unity Reacher environment. The environment is considered solved if the score (average over 100 episodes and all the parallel arms) is >30. 
 
 ## Unity Reacher Environment
 The agent controls a double-jointed arm to move to goal locations and keep it there. The agent recieve +0.1 reward for every time stamp the arm is in the goal location. The observation space has 33 variables and the action space has 4 continuous variables. 
@@ -22,8 +22,7 @@ activate drlnd`
 The agent consists of a critic network and an actor network. The critic network learns to approximate the state-action value function (Q). The actor network learns to choose actions based on input state to maximize the expected value given by the critic network. 
 
 The critic network is updated through TD learning. The critic and target critic network is represented by a neural network with three fully connected layers.
-```
-x_state = nn.Linear(state_dim,hidden_dim_state)(state)
+```x_state = nn.Linear(state_dim,hidden_dim_state)(state)
 x_state = F.leaky_relu(x_state)
 x = torch.cat(x_state, action)
 x = nn.Linear(hidden_dim_state+action_dim, hidden_dim)(x)
@@ -32,11 +31,14 @@ x = nn.Linear(hidden_dim, 1)(x)
 ```
 
 The actor network is represented by a neural network with three fully connected layers.
-```
-x = nn.Linear(state_dim,hidden_dim)(state)
+```x = nn.Linear(state_dim,hidden_dim)(state)
 x = F.relu(x)
 x = nn.Linear(hidden_dim, hidden_dim_1)(x)
 x = F.relu(x)
 x = nn.Linear(hidden_dim_1, action_dim)(x)
 x = F.tanh(x)
 ```
+
+## Results
+The environment is solved in 283 episodes.
+![Training score](https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/scores.png)
