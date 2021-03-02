@@ -19,14 +19,24 @@ activate drlnd`
 
 ## Deep Deterministic Policy Gradient (DDPG) Agent
 
-The agent consists of a critic network and an actor network. The critic network learns to approximate the state-action value function (Q). The actor network learns to choose actions based on input state to maximize the expected value given by the critic network. The critic network is updated through TD learning. 
+The agent consists of a critic network and an actor network. The critic network learns to approximate the state-action value function (Q). The actor network learns to choose actions based on input state to maximize the expected value given by the critic network. 
 
-The critic and target critic network are represented by neural network with three connected layers.
+The critic network is updated through TD learning. The critic and target critic network is represented by a neural network with three fully connected layers.
 ```
 x_state = nn.Linear(state_dim,hidden_dim_state)(state)
 x_state = F.leaky_relu(x_state)
 x = torch.cat(x_state, action)
-x = nn.Linear(hidden_dim_state, hidden_dim)(x)
+x = nn.Linear(hidden_dim_state+action_dim, hidden_dim)(x)
 x = F.relu(x)
-x = nn.Linear(hidden_dim, action_dim)(x)
+x = nn.Linear(hidden_dim, 1)(x)
+```
+
+The actor network is represented by a neural network with three fully connected layers.
+```
+x = nn.Linear(state_dim,hidden_dim)(state)
+x = F.relu(x)
+x = nn.Linear(hidden_dim, hidden_dim_1)(x)
+x = F.relu(x)
+x = nn.Linear(hidden_dim_1, action_dim)(x)
+x = F.tanh(x)
 ```
