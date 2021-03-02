@@ -21,7 +21,11 @@ activate drlnd`
 
 The agent consists of a critic network and an actor network. The critic network learns to approximate the state-action value function (Q). The actor network learns to choose actions based on input state to maximize the expected value given by the critic network. 
 
-The critic network is updated through TD learning. The critic and target critic network is represented by a neural network with three fully connected layers.
+The critic network is updated through TD learning. 
+
+Q(state, action) = reward + GAMMA* Q'(next_state,next_action)
+
+Q' is the target Q network. The critic and target critic network is represented by a neural network with three fully connected layers.
 ```x_state = nn.Linear(state_dim,hidden_dim_state)(state)
 x_state = F.leaky_relu(x_state)
 x = torch.cat(x_state, action)
