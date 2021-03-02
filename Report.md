@@ -40,7 +40,7 @@ x = F.tanh(x)
 - Actor optimizer: Adam with learning rate 2E-4
 
 ## Results
-The environment is solved in 283 episodes. The neural network weights are saved in 
+The environment is solved in 283 episodes. The neural network weights are saved in `checkpoint_actor.pth` and `checkpoint_critic.pth`
 
 <img src="https://github.com/ccakarolotw/Deep-reinforment-learning-Unity-Reacher-environment-DDPG/blob/main/Unity-Reacher_trained.gif" width="500" >
 
