@@ -1,5 +1,5 @@
 # Deep-reinforment-learning-Unity-Reacher-environment-DDPG
-This project uses DDPG implemented in Pytorch to solve the Unity Reacher environment. The environment is considered solved if the score (average over 100 episodes and all the parallel arms) is >30. 
+This project uses DDPG implemented in Pytorch to solve the Unity Reacher environment. The environment is considered solved if the score (average over 100 episodes and all the parallel arms) is >30. The code is in PyTorch (v0.4) and Python 3. 
 
 ## Unity Reacher Environment
 The agent controls a double-jointed arm to move to goal locations and keep it there. The agent recieve +0.1 reward for every time stamp the arm is in the goal location. The observation space has 33 variables and the action space has 4 continuous variables. 
@@ -15,7 +15,7 @@ activate drlnd`
 
 `conda install pytorch=0.4.0 -c pytorch`
 
-3. Download Unity environment and place it in the same folder as the jupyter notebook `Continuous_control.ipynb`
+3. Download Unity environment and place it in the same folder as the jupyter notebook `Continuous_Control.ipynb`
 
 ## Deep Deterministic Policy Gradient (DDPG) Agent
 
