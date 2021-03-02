@@ -15,7 +15,7 @@ activate drlnd`
 
 `conda install pytorch=0.4.0 -c pytorch`
 
-3. Download Unity environment and place it in the same folder as the jupyter notebook `Navigation.ipynb`
+3. Download Unity environment and place it in the same folder as the jupyter notebook `Continuous_control.ipynb`
 
 ## Deep Deterministic Policy Gradient (DDPG) Agent
 
